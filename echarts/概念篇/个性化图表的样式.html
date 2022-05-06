@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #main,
+      html,
+      body {
+        width: 100%;
+      }
+      #main {
+        height: 400px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="main"></div>
+    <button onclick="dispose()">销毁</button>
+    <button onclick="create()">新建</button>
+    <script src="https://cdn.jsdelivr.net/npm/echarts@5.3.2/dist/echarts.min.js"></script>
+    <script>
+      var myChart;
+      const dispose = () => {
+        myChart && myChart.dispose();
+      };
+      const create = () => {
+        myChart = echarts.init(document.getElementById("main"), null);
+        let option = {
+          // 背景色
+          backgroundColor: "#2c343c",
+          series: [
+            {
+              name: "访问来源",
+              type: "pie",
+              radius: "55%",
+              data: [
+                { value: 235, name: "视频广告" },
+                { value: 274, name: "联盟广告" },
+                { value: 310, name: "邮件营销" },
+                { value: 335, name: "直接访问" },
+                { value: 400, name: "搜索引擎" },
+              ],
+              roseType: "angle",
+              label: {
+                //   正常颜色
+                normal: {
+                  textStyle: {
+                    color: "pink",
+                  },
+                },
+                // hover (高亮) 时 颜色
+                emphasis: {
+                  // 文字样式
+                  textStyle: {
+                    color: "red",
+                  },
+                },
+              },
+              labelLine: {
+                normal: {
+                  // 连接线样式
+                  lineStyle: {
+                    color: "pink",
+                  },
+                },
+                emphasis: {
+                  lineStyle: {
+                    color: "red",
+                  },
+                },
+              },
+              //   每个饼的样式
+              itemStyle: {
+                normal: {
+                  shadowBlur: 200,
+                  shadowColor: "rgba(0, 0, 0, 0.5)",
+                },
+                emphasis: {
+                  // 阴影的大小
+                  shadowBlur: 400,
+                  // 阴影水平方向上的偏移
+                  shadowOffsetX: 0,
+                  // 阴影垂直方向上的偏移
+                  shadowOffsetY: 0,
+                  // 阴影颜色
+                  shadowColor: "rgba(255, 255, 255)",
+                },
+              },
+            },
+          ],
+        };
+        myChart.setOption(option);
+      };
+      document.addEventListener("DOMContentLoaded", create);
+      /* 
+      小贴士：在容器节点被销毁时，总是应调用 echartsInstance.dispose 以销毁实例释放资源，避免内存泄漏。
+      */
+    </script>
+  </body>
+</html>

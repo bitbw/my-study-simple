@@ -1,0 +1,22 @@
+{
+  "name": "my-study-simple",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "preupdate": "git add . ",
+    "update": "git commit -m",
+    "postupdate": "git pull && git push"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bitbw/my-study-simple.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/bitbw/my-study-simple/issues"
+  },
+  "homepage": "https://github.com/bitbw/my-study-simple#readme"
+}
