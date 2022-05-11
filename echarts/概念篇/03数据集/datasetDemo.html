@@ -109,6 +109,7 @@
               max: 25,
               position: "left",
               axisLabel: {
+                // 格数化坐标轴文字
                 formatter: "{value} °C",
               },
             },
@@ -117,17 +118,15 @@
             {
               type: "bar",
               yAxisIndex: 0,
-             
+              // 自动使用 index 1 的 row
+              seriesLayoutBy: 'row',
             },
             {
-              name: "温度",
               type: "line",
               smooth: true,
               yAxisIndex: 1,
-              data: [
-                6.0, 10.2, 10.3, 11.5, 10.3, 13.2, 14.3, 16.4, 18.0, 16.5, 12.0,
-                5.2,
-              ],
+               // 自动使用 index 2 的 row
+              seriesLayoutBy: 'row',
             },
           ],
         };
