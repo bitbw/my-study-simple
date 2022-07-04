@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>canvas</title>
+    <style></style>
+  </head>
+  <body>
+    <canvas id="drawing" width="200" height="200"
+      >A drawing of something.</canvas
+    >
+    <canvas id="drawing2" width="200" height="200"
+      >A drawing of something.</canvas
+    >
+    <script>
+      /* 
+           5 变换
+           上下文变换可以操作绘制在画布上的图像。2D绘图上下文支持所有常见的绘制变换。
+           在创建绘制上下文时，会以默认值初始化变换矩阵，从而让绘制操作如实应用到绘制结果上。
+           对绘制上下文应用变换，可以导致以不同的变换矩阵应用绘制操作，从而产生不同的结果。以下方法可用于改变绘制上下文的变换矩阵。
+           ❑ rotate(angle)：围绕原点把图像旋转angle弧度。❑ scale(scaleX, scaleY)：通过在x轴乘以scaleX、在y轴乘以scaleY来缩放图像。
+           scaleX和scaleY的默认值都是1.0。
+           ❑ translate(x, y)：把原点移动到(x, y)。执行这个操作后，坐标(0, 0)就会变成(x, y)。
+           ❑ transform(m1_1, m1_2, m2_1, m2_2, dx, dy)：像下面这样通过矩阵乘法直接修改矩阵。
+                  m1_1 m1_2 dx
+                  m2_1 m2_2 dy
+                  0     0     1
+          */
+      document.addEventListener("DOMContentLoaded", async () => {
+        let drawing = document.getElementById("drawing");
+        // 确保浏览器支持<canvas>
+        if (drawing.getContext) {
+          let context = drawing.getContext("2d");
+          // 创建路径
+          context.beginPath();
+          context.moveTo(199, 100);
+          context.arc(100, 100, 99, 0, 2 * Math.PI, false);
+          // 绘制内圆
+          context.moveTo(194, 100);
+          context.arc(100, 100, 94, 0, 2 * Math.PI, false);
+          // 移动原点到表盘中心
+          context.translate(100, 100);
+          // 绘制分针
+          context.moveTo(0, 0);
+          context.lineTo(0, -85);
+          // 绘制时针
+          context.moveTo(0, 0);
+          context.lineTo(-65, 0);
+
+          // 描画路径
+          context.strokeStyle = "rgba(0,0,255,0.5)";
+          context.stroke();
+        }
+      });
+    </script>
+  </body>
+</html>
