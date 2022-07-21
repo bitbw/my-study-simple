@@ -14,13 +14,15 @@
 </head>
 
 <body>
-
+    <input type="file" name="" id="input" >
     <canvas id="glcanvas" width="640" height="480">
         你的浏览器似乎不支持或者禁用了 HTML5 <code>&lt;canvas&gt;</code> 元素。
     </canvas>
 
+
     </div>
     <script>
+
         /* 
         // https://developer.mozilla.org/zh-CN/docs/Web/API/WebGL_API/Tutorial/Getting_started_with_WebGL
          1 初识 WebGL
@@ -39,6 +41,10 @@
         使用这些框架而非原生的 WebGL 可以更容易地开发 3D 应用和游戏。
         */
         + async function (window) {
+            document.querySelector("#input").addEventListener("change", (e) => {
+                console.log("Bowen: e", e)
+
+            })
             await new Promise((resolve, reject) => {
                 window.addEventListener("load", async () => {
                     resolve()
